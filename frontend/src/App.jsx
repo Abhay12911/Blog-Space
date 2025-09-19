@@ -5,7 +5,7 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import PostDetails from './pages/PostDetails'
 import CreatePost from './pages/CreatePost'
-import EditPost from './pages/EditPost'
+import EditPost from './pages/Editpost'
 import Profile from './pages/Profiles'
 import {  UserContextProvider } from './context/UserContext'
 import MyBlogs from './pages/MyBlogs'
