@@ -26,13 +26,13 @@ const Navbar = () => {
     
   return (
     <div className="flex items-center justify-between px-6 md:px-[200px] py-4">
-    <h1 className="text-lg md:text-xl font-extrabold"><Link to="/">Blogs Space</Link></h1>
+    <h1 className="text-lg md:text-xl font-extrabold text-white"><Link to="/">Tourist Blogs</Link></h1>
     {path==="/" && <div className="flex justify-center items-center space-x-0">
-    <p onClick={()=>navigate(prompt?"?search="+prompt:navigate("/"))} className="cursor-pointer"><BsSearch/></p>
-    <input onChange={(e)=>setPrompt(e.target.value)} className="outline-none px-3 " placeholder="Search a post" type="text"/>
     
+    <input onChange={(e)=>setPrompt(e.target.value)} className="outline-none px-3 rounded-lg" placeholder="Search a post" type="text"/>
+    <p onClick={()=>navigate(prompt?"?search="+prompt:navigate("/"))} className="cursor-pointer  text-white pl-4"><BsSearch/></p>
     </div>}
-    <div className="hidden md:flex items-center justify-center space-x-2 md:space-x-4">
+    <div className="hidden md:flex items-center justify-center space-x-2 md:space-x-4 text-white">
       {user? <h3><Link to="/write">Write</Link></h3> :<h3><Link to="/login">Login</Link></h3>}
       {user? <div onClick={showMenu}>
         <p className="cursor-pointer relative"><FaBars/></p>

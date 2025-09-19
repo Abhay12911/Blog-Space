@@ -17,6 +17,8 @@ const App = () => {
 
   
   return (
+    <div className='bg-gradient-to-b from-black to-blue-500 bg-cover w-full h-screen 
+bg-inherit mix-blend-normal'>
       <UserContextProvider>
       <Routes>
       <Route exact path="/" element={<Home/>}/>
@@ -30,6 +32,7 @@ const App = () => {
       </Routes>
     
       </UserContextProvider>
+      </div>
   )
 }
 

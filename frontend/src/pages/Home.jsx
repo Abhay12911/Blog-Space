@@ -36,6 +36,7 @@ const Home = () => {
 
   return (
     <>
+    <div className="bg-gradient-to-b from-black to-blue-500 bg-cover w-full min-h-screen">
       <Navbar />
       <div className="px-8 md:px-[200px] min-h-[80vh]">
         {loader ? (
@@ -49,10 +50,11 @@ const Home = () => {
             </Link>
           ))
         ) : (
-          <h3 className="text-center font-bold mt-16">No posts available</h3>
+          <h3 className="text-center font-bold mt-16 text-white">No posts available</h3>
         )}
       </div>
       <Footer />
+      </div>
     </>
   );
 };

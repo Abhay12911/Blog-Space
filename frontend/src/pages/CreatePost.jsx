@@ -74,13 +74,13 @@ const CreatePost = () => {
 
 
   return (
-    <div>
+    <div className='bg-transparent  bg-gradient-to-b from-blue-800 to-black  min-h-screen'>
         <Navbar/>
-        <div className='px-6 md:px-[200px] mt-8'>
-        <h1 className='font-bold md:text-2xl text-xl '>Create a post</h1>
-        <form className='w-full flex flex-col space-y-4 md:space-y-8 mt-4'>
+        <div className='px-6 md:px-[200px] mt-8 bg-transparent' >
+        <h1 className='font-bold md:text-2xl text-xl text-white'>Create a post</h1>
+        <form className='w-full flex flex-col space-y-4 md:space-y-8 mt-4 bg-transparent'>
           <input onChange={(e)=>setTitle(e.target.value)} type="text" placeholder='Enter post title' className='px-4 py-2 outline-none'/>
-          <input onChange={(e)=>setFile(e.target.files[0])} type="file"  className='px-4'/>
+          <input onChange={(e)=>setFile(e.target.files[0])} type="file"  className='px-4 text-white'/>
           <div className='flex flex-col'>
             <div className='flex items-center space-x-4 md:space-x-8'>
                 <input value={cat} onChange={(e)=>setCat(e.target.value)} className='px-4 py-2 outline-none' placeholder='Enter post category' type="text"/>
@@ -88,7 +88,7 @@ const CreatePost = () => {
             </div>
 
             {/* categories */}
-            <div className='flex px-4 mt-3'>
+            <div className='flex px-4 mt-3 bg-transparent'>
             {cats?.map((c,i)=>(
                 <div key={i} className='flex justify-center items-center space-x-2 mr-4 bg-gray-200 px-2 py-1 rounded-md'>
                 <p>{c}</p>

@@ -93,16 +93,17 @@ const PostDetails = () => {
   
   return (
     <div>
+    <div className="min-h-screen bg-gradient-to-b from-purple-800 to-black ">
         <Navbar/>
-        {loader?<div className="h-[80vh] flex justify-center items-center w-full"><Loader/></div>:<div className="px-8 md:px-[200px] mt-8">
+        {loader?<div className=" flex-col justify-between items-center w-full min-h-screen"><Loader/></div>:<div className="px-8 md:px-[200px] mt-8">
         <div className="flex justify-between items-center">
-         <h1 className="text-2xl font-bold text-black md:text-3xl">{post.title}</h1>
+         <h1 className="text-2xl font-bold text-white md:text-3xl">{post.title}</h1>
          {user?._id===post?.userId && <div className="flex items-center justify-center space-x-2">
             <p className="cursor-pointer" onClick={()=>navigate("/edit/"+postId)} ><BiEdit/></p>
             <p className="cursor-pointer" onClick={handleDeletePost}><MdDelete/></p>
          </div>}
         </div>
-        <div className="flex items-center justify-between mt-2 md:mt-4">
+        <div className="flex items-center text-white justify-between mt-2 md:mt-4">
         <p>@{post.username}</p>
        <div className="flex space-x-2">
        <p>{new Date(post.updatedAt).toString().slice(0,15)}</p>
@@ -110,8 +111,8 @@ const PostDetails = () => {
        </div>
         </div>
         <img src={IF+post.photo} className="w-full  mx-auto mt-8" alt=""/>
-         <p className="mx-auto mt-8">{post.desc}</p>
-         <div className="flex items-center mt-8 space-x-4 font-semibold">
+         <p className="mx-auto mt-8 text-white">{post.desc}</p>
+         <div className="flex items-center mt-8 text-white space-x-4 font-semibold">
           <p>Categories:</p>
           <div className="flex justify-center items-center space-x-2">
           {post.categories?.map((c,i)=>(
@@ -124,7 +125,7 @@ const PostDetails = () => {
           </div>
          </div>
          <div className="flex flex-col mt-4">
-         <h3 className="mt-6 mb-4 font-semibold">Comments:</h3>
+         <h3 className="mt-6 mb-4 font-semibold text-white">Comments:</h3>
          {comments?.map((c)=>(
           <Comment key={c._id} c={c} post={post} />
          ))}
@@ -136,7 +137,8 @@ const PostDetails = () => {
           <button onClick={postComment} className="bg-black text-sm text-white px-2 py-2 md:w-[20%] mt-4 md:mt-0">Add Comment</button>
          </div>
         </div>}
-        <Footer/>
+        <Footer className="absolute"/>
+    </div>
     </div>
   )
 }

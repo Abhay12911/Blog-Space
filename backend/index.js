@@ -1,4 +1,5 @@
 const express=require('express')
+
 const app=express()
 const mongoose=require('mongoose')
 const dotenv=require('dotenv')
@@ -12,11 +13,10 @@ const postRoute=require('./routes/posts')
 const commentRoute=require('./routes/comments')
 
 //database
-const connectDB=async()=>{
+const connectDB = async () => {
     try{
         await mongoose.connect(process.env.MONGO_URL)
         console.log("database is connected successfully!")
-
     }
     catch(err){
         console.log(err)
