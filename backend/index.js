@@ -29,8 +29,15 @@ const connectDB = async () => {
 dotenv.config()
 app.use(express.json())
 app.use("/images",express.static(path.join(__dirname,"/images")))
-app.use(cors({origin:["http://localhost:5173", "https://blog-space-frontend.onrender.com/"],credentials:true}))
+app.use(cors({origin:["http://localhost:5173", "https://blog-space-frontend.onrender.com"],credentials:true}))
 app.use(cookieParser())
+
+// Add request logging middleware
+app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+    next();
+});
+
 app.use("/api/auth",authRoute)
 app.use("/api/users",userRoute)
 app.use("/api/posts",postRoute)
@@ -51,6 +58,15 @@ const upload=multer({storage:storage})
 app.post("/api/upload",upload.single("file"),(req,res)=>{
     // console.log(req.body)
     res.status(200).json("Image has been uploaded successfully!")
+})
+
+// Health check endpoint
+app.get("/api/health", (req, res) => {
+    res.status(200).json({ 
+        status: "OK", 
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || "development"
+    });
 })
 
 

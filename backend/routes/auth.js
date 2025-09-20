@@ -61,13 +61,26 @@ router.get("/logout",async (req,res)=>{
 
 //REFETCH USER
 router.get("/refetch", (req,res)=>{
-    const token=req.cookies.token
-    jwt.verify(token,process.env.SECRET,{},async (err,data)=>{
-        if(err){
-            return res.status(404).json(err)
+    try {
+        const token=req.cookies.token
+        console.log("Refetch request - Token present:", !!token);
+        
+        if (!token) {
+            return res.status(401).json({ error: "No token provided" });
         }
-        res.status(200).json(data)
-    })
+        
+        jwt.verify(token,process.env.SECRET,{},async (err,data)=>{
+            if(err){
+                console.log("JWT verification error:", err);
+                return res.status(401).json({ error: "Invalid token", details: err.message })
+            }
+            console.log("JWT verification successful for user:", data.username);
+            res.status(200).json(data)
+        })
+    } catch (error) {
+        console.log("Refetch error:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
 })
 
 
